@@ -52,7 +52,7 @@ Proyecto de inventario desarrollado como prueba. Contiene código en PHP y JavaS
 4. Ajusta las credenciales de la base de datos en el archivo de configuración del proyecto (path:localhost/castoresInventario/db/db.php).
 5. Abre el proyecto en Visual Studio Code y ejecuta en el entorno web: http://localhost/castoresInventario
 
-(Adaptar pasos según la estructura real del proyecto y nombres de archivos de configuración.)
+enlace a video de funcionamiento del proyecto en GOOGLE DRIVE: https://drive.google.com/file/d/1est4UR6YVWZDhorzpmzMBXgMQhXVpkQ2/view?usp=sharing
 
 ## Autor
 Cristian Isaac Torres Uribe
