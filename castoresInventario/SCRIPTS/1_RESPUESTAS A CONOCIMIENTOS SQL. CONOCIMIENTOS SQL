@@ -1,0 +1,57 @@
+1. CONOCIMIENTOS SQL
+
+1.1) Describe el funcionamiento general de la sentencia JOIN.
+R=Sirve para convinar 2 o mas tablas que tienen como relacion alguna de sus columnas, al hacer 
+esto en una consulta nos devuelve las columnas seleccionadas de ambas tablaen una sola tabla.
+
+1.2) ¿Cuáles son los tipos de JOIN y cuál es el funcionamiento de los mismos?
+R=
+INNER JOIN => retorna solo las filas que tienen coincidencia en ambas tablas.
+
+LEFT JOIN => retorna todas las fgilas de la tabla izquierda, Tambien dvuelve las columnas que estan en null de la columna de la derecha cuando no hay coincidencias.
+
+RIGHT JOIN => retorna de la misma manera que LEFT JOIN pero en sentido opuesto
+
+FULL OUTER JOIN => retorna todas las filas que tienen coincidecia en las columnas y muestra null en donde no hay datos que coincidan.
+
+CROSS JOIN  => retorna de manera cada una de las coincidecias de la tabla q tanto como de la tabla 2 
+
+1.3) ¿Cuál el funcionamiento general de los TRIGGER y qué propósito tienen?
+R= Es un script que corre en automatico cunado realizamos un INSERT, UPDATE, DELETE en alguna de las tablas, tiene diversos 
+propositos pero yo los he usado para disparar alertas y hacer seguimientos de en los historiales de las plataformas cunado 
+los usuarios hacen algun movimiento.
+
+1.4) ¿Qué es y para qué sirve un STORED PROCEDURE?
+R= Es un script que podemos guardar el la BD y que podemos mandarle parametros para realizar alguna accion.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1.5) Traer todos los productos que tengan una venta.
+R= 
+SELECT DISTINCT p.idProducto, p.nombre, p.precio
+FROM productos p
+JOIN ventas v ON p.idProducto = v.idProducto;
+
+1.6) Traer todos los productos que tengan ventas y la cantidad total de productos vendidos.
+R=
+SELECT p.idProducto,
+       p.nombre,
+       SUM(v.cantidad) AS totalcantidadvendida
+FROM productos p
+JOIN ventas v ON p.idProducto = v.idProducto
+GROUP BY p.idProducto, p.nombre
+ORDER BY p.idProducto;
+
+1.7) Traer todos los productos (independientemente de si tienen ventas o no) y la suma total ($) vendida por
+producto.
+R=
+
+SELECT p.idProducto,
+       p.nombre,
+       p.precio,
+       COALESCE(SUM(v.cantidad * p.precio), 0) AS total_vendido
+FROM productos p
+LEFT JOIN ventas v ON p.idProducto = v.idProducto
+GROUP BY p.idProducto, p.nombre, p.precio
+ORDER BY p.idProducto;
