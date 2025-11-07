@@ -2,6 +2,8 @@
 session_start();
 require_once '../../db/db.php';
 
+header('Content-Type: application/json; charset=utf-8');
+
 // Verificar que el usuario esté autenticado
 if (!isset($_SESSION['identity'])) {
    http_response_code(401);

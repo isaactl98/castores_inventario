@@ -37,10 +37,10 @@
     <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.templates.min.js"></script>
 
 
+    <script src="assets/js/historialmovimientos.js?v=<?= time() ?>"></script>
+    <script src="assets/js/usuarios.js?v=<?= time() ?>"></script>
+    <script src="assets/js/productos.js?v=<?= time() ?>"></script>
 
-    <script src="assets/js/usuarios.js"></script>
-    <script src="assets/js/productos.js"></script>
-    <script src="assets/js/historialmovimientos.js"></script>
 
 
 

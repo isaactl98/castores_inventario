@@ -13,7 +13,6 @@ class homeController
     {
         Utils::isAdmin();
         require_once 'modals/addProducto.php';
-
         require_once 'views/dashboard/index.php';
     }
     public function controlUsuarios()

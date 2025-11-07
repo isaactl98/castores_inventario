@@ -38,8 +38,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MODULOS:</h6>
                 <a class="collapse-item" href="<?php echo baseUrl ?>?controller=home&action=dashboard">Inventario de Productos</a>
-                <a class="collapse-item" href="<?php echo baseUrl ?>?controller=home&action=entradas">Entradas</a>
-                <a class="collapse-item" href="<?php echo baseUrl ?>?controller=home&action=salidas">Salidas</a>
+
             </div>
         </div>
     </li>

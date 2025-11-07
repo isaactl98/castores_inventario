@@ -173,23 +173,42 @@ $("#tablaProductos tbody").on("click", ".btn-entrada-stock", function () {
           cantidad: cantidad
         },
         success: function (response) {
-          Swal.fire({
-            icon: "success",
-            title: "Entrada registrada",
-            text: `Se agregaron ${cantidad} unidades al producto.`,
-            showConfirmButton: false,
-            timer: 2000
-          });
-          // Recargar la tabla
-          table.ajax.reload(null, false);
+          console.log("Respuesta recibida:", response);
+          if (response.success) {
+            // Forzar recarga completa de datos sin resetear paginación
+            table.ajax.reload(function () {
+              console.log("Tabla recargada exitosamente");
+            }, false);
+
+            Swal.fire({
+              icon: "success",
+              title: "Entrada registrada",
+              text: `Se agregaron ${cantidad} unidades al producto.`,
+              showConfirmButton: false,
+              timer: 2000
+            });
+            table.clear().draw();
+            table.ajax.reload();
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: response.message || "No se pudo registrar la entrada."
+            });
+            table.clear().draw();
+            table.ajax.reload();
+          }
         },
         error: function (xhr, status, error) {
+          console.error("Error AJAX:", xhr.responseText);
           Swal.fire({
             icon: "error",
             title: "Error",
             text:
               xhr.responseJSON?.message || "No se pudo registrar la entrada."
           });
+          table.clear().draw();
+          table.ajax.reload();
         }
       });
     }
@@ -239,16 +258,34 @@ $("#tablaProductos tbody").on("click", ".btn-salida-stock", function () {
           cantidad: cantidad
         },
         success: function (response) {
-          Swal.fire({
-            icon: "success",
-            title: "Salida registrada",
-            text: `Se retiraron ${cantidad} unidades del producto.`,
-            showConfirmButton: false,
-            timer: 2000
-          });
-          table.ajax.reload(null, false);
+          console.log("Respuesta recibida:", response);
+          if (response.success) {
+            // Forzar recarga completa de datos sin resetear paginación
+            table.ajax.reload(function () {
+              console.log("Tabla recargada exitosamente");
+            }, false);
+
+            Swal.fire({
+              icon: "success",
+              title: "Salida registrada",
+              text: `Se retiraron ${cantidad} unidades del producto.`,
+              showConfirmButton: false,
+              timer: 2000
+            });
+            table.clear().draw();
+            table.ajax.reload();
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: response.message || "No se pudo registrar la salida."
+            });
+            table.clear().draw();
+            table.ajax.reload();
+          }
         },
         error: function (xhr) {
+          console.error("Error AJAX:", xhr.responseText);
           Swal.fire({
             icon: "error",
             title: "Error",
@@ -256,6 +293,8 @@ $("#tablaProductos tbody").on("click", ".btn-salida-stock", function () {
               xhr.responseJSON?.message ||
               "No se pudo registrar la salida. Verifica el stock disponible."
           });
+          table.clear().draw();
+          table.ajax.reload();
         }
       });
     }
@@ -292,7 +331,8 @@ $("#tablaProductos tbody").on("click", ".btn-toggle-estado", function () {
             timer: 1500,
             showConfirmButton: false
           });
-          table.ajax.reload(null, false);
+          table.clear().draw();
+          table.ajax.reload();
         },
         error: function (xhr) {
           Swal.fire({
@@ -302,6 +342,8 @@ $("#tablaProductos tbody").on("click", ".btn-toggle-estado", function () {
               xhr.responseJSON?.message ||
               "No se pudo actualizar el estado del producto."
           });
+          table.clear().draw();
+          table.ajax.reload();
         }
       });
     }

@@ -1,5 +1,4 @@
 "use strict";
-
 var url = location.origin;
 var path = window.location.pathname;
 var funcion = "cargarHistorial";
