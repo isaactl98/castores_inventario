@@ -46,11 +46,11 @@ Proyecto de inventario desarrollado como prueba. Contiene código en PHP y JavaS
 
 ## Instalación y uso (rápido)
 1. Clona el repositorio:
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/isaactl98/castores_inventario.git
 2. Configura tu servidor local (por ejemplo, XAMPP, WAMP o Docker) con PHP y MariaDB.
-3. Crea la base de datos e importa el archivo SQL si existe (por ejemplo: import.sql).
-4. Ajusta las credenciales de la base de datos en el archivo de configuración del proyecto (p. ej., config.php o .env).
-5. Abre el proyecto en Visual Studio Code y ejecuta en el entorno web: http://localhost/<ruta_del_proyecto>
+3. Crea la base de datos con nombre "castoresinventario" e importa el archivo SQL que se encuentra en (castoresInventario\SCRIPTS\castoresinventario.sql).
+4. Ajusta las credenciales de la base de datos en el archivo de configuración del proyecto (path:localhost/castoresInventario/db/db.php).
+5. Abre el proyecto en Visual Studio Code y ejecuta en el entorno web: http://localhost/castoresInventario
 
 (Adaptar pasos según la estructura real del proyecto y nombres de archivos de configuración.)
 
